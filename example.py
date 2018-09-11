@@ -9,12 +9,19 @@ from src.feed_scanner import feed_scanner
 from src.follow_protocol import follow_protocol
 from src.unfollow_protocol import unfollow_protocol
 
+import config
+
+from src_josep import utils
+
+random_tag_list = utils.file(config.HASHTAGS_FILE)
+secret = utils.file(config.SECRET_FILE).list
+
 bot = InstaBot(
-    login="username",
-    password="password",
+    login=secret[0].split(':')[0],
+    password=secret[0].split(':')[1],
     like_per_day=1000,
-    comments_per_day=0,
-    tag_list=['follow4follow', 'f4f', 'cute', 'l:212999109'],
+    comments_per_day=30,
+    tag_list=random_tag_list.list, # 'l:212999109'],
     tag_blacklist=['rain', 'thunderstorm'],
     user_blacklist={},
     max_like_for_one_tag=50,
@@ -49,7 +56,9 @@ bot = InstaBot(
         'beauty', 'express', 'kredit', 'collection', 'impor', 'preloved',
         'follow', 'follower', 'gain', '.id', '_id', 'bags'
     ],
-    unfollow_whitelist=['example_user_1', 'example_user_2'])
+    unfollow_whitelist=[
+        # 'example_user_1', 'example_user_2'
+        ])
 while True:
 
     #print("# MODE 0 = ORIGINAL MODE BY LEVPASHA")
