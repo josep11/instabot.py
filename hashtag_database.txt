@@ -12,3 +12,4 @@ journey
 landscape
 sightseeing
 earth
+picoftheday
