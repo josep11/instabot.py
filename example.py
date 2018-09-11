@@ -11,7 +11,7 @@ from src.unfollow_protocol import unfollow_protocol
 
 import config
 
-from src_josep import utils
+from src_mod import utils
 
 random_tag_list = utils.file(config.HASHTAGS_FILE)
 secret = utils.file(config.SECRET_FILE).list
